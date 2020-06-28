@@ -2,7 +2,7 @@
 using namespace std;
 
 
-void swapp(int a, int b){
+void swapp(int &a, int &b){
     int temp = a;
     a=b;
     b=temp;
