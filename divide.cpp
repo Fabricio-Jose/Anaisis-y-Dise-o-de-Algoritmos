@@ -2,10 +2,6 @@
 using namespace std;
 
 
-/*
- g++ divide.cpp -o divide.o
-./divide.o<prueba.txt>salida.txt
- */
 int max_2(int x, int y){
     if (x>y)
         return x;
