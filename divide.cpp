@@ -81,8 +81,8 @@ int acumulado(int **A,int f_sub,int c_sup, int f_inf,int c_inf, int plano)
 	else{
 	if(f_sub!=f_inf){
             int q=(f_sub+f_inf)/2;
-	    int maxsup=acumulado(A,f_sub,c_sup,q,c_inf,0);
-	    int maxinf=acumulado(A,q+1,c_sup,f_inf,c_inf,0);
+	    int maxsup=acumulado(A,f_sub,c_sup,q,c_inf,!plano);
+	    int maxinf=acumulado(A,q+1,c_sup,f_inf,c_inf,!plano);
 	    int max2sup=A[q][c_sup];
 	    int max2inf=A[q+1][c_sup];
 	    int maxcruz=A[q][c_sup];
