@@ -23,17 +23,17 @@ int max_3(int x, int y, int z){
 }
 
 
-int acumulado(int **A,int f_sub,int c_sup, int f_inf,int c_inf, bool plano)
+int acumulado(int **A,int f_sub,int c_sup, int f_inf,int c_inf, int plano)
 {
 	if(f_sub==f_inf && c_sup==c_inf)	{
 		return max(0,A[f_sub][c_sup]);
 	}
-	if(plano==true){
+	if(plano==1){
 	if(c_sup!=c_inf){
 		int q=(c_sup+c_inf)/2;
 
-		int maxizq=acumulado(A,f_sub,c_sup,f_inf,q,!plano);
-		int maxder=acumulado(A,f_sub,q+1,f_inf,c_inf,!plano);
+		int maxizq=acumulado(A,f_sub,c_sup,f_inf,q,0);
+		int maxder=acumulado(A,f_sub,q+1,f_inf,c_inf,0);
 
 		int max2izq=A[f_sub][q];
 		int max2der=A[f_sub][q+1];
@@ -75,14 +75,14 @@ int acumulado(int **A,int f_sub,int c_sup, int f_inf,int c_inf, bool plano)
             return max_3(maxder,maxizq,maxcruz);
 	}
 	else{
-	    return acumulado(A,f_sub,c_sup,f_inf,c_inf,!plano);
+	    return acumulado(A,f_sub,c_sup,f_inf,c_inf,0);
 	}
     }
 	else{
 	if(f_sub!=f_inf){
             int q=(f_sub+f_inf)/2;
-	    int maxsup=acumulado(A,f_sub,c_sup,q,c_inf,!plano);
-	    int maxinf=acumulado(A,q+1,c_sup,f_inf,c_inf,!plano);
+	    int maxsup=acumulado(A,f_sub,c_sup,q,c_inf,0);
+	    int maxinf=acumulado(A,q+1,c_sup,f_inf,c_inf,0);
 	    int max2sup=A[q][c_sup];
 	    int max2inf=A[q+1][c_sup];
 	    int maxcruz=A[q][c_sup];
@@ -119,7 +119,7 @@ int acumulado(int **A,int f_sub,int c_sup, int f_inf,int c_inf, bool plano)
 		return max_3(maxinf,maxsup,maxcruz);
 		}
 	else{
-		return acumulado(A,f_sub,c_sup,f_inf,c_inf,!plano);
+		return acumulado(A,f_sub,c_sup,f_inf,c_inf,0);
 	}
 }
 }
@@ -145,7 +145,7 @@ int main(){
 		}
 	}
 	
-	x=acumulado(arreglo,0,0,n-1,n-1,true);
+	x=acumulado(arreglo,0,0,n-1,n-1,1);
     //cout<<"La suma maxima es: ";
 	cout<<x<<endl;
     
