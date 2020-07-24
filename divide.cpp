@@ -28,7 +28,7 @@ int acumulado(int **A,int f_sub,int c_sup, int f_inf,int c_inf, bool plano)
 	if(f_sub==f_inf && c_sup==c_inf)	{
 		return max(0,A[f_sub][c_sup]);
 	}
-	if(plano){
+	if(plano==true){
 	if(c_sup!=c_inf){
 		int q=(c_sup+c_inf)/2;
 
